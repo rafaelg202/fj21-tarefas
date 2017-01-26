@@ -2,10 +2,19 @@ package br.com.caelum.tarefas.modelo;
 
 import java.util.Calendar;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Tarefa {
 	private Long id;
+	@NotEmpty(message="A descrição deve ser preenchida") 
+	@Size(min=5, message="Descrição deve ter pelo menos 5 caracteres")
 	private String descricao;
 	private boolean finalizado;
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Calendar dataFinalizacao;
 
 	public Long getId() {
